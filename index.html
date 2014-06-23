@@ -62,27 +62,26 @@
   <article data-timings="">
     <ol>
 <li>Calculate binomial and normal distribution with dbinom and dnorm.</li>
-<li>Plot two distributions on the same plot. </li>
-</ol>
+<li><p>Plot two distributions on the same plot. </p>
 
-<p>output$plot &lt;- renderPlot( {
+<pre><code>output$plot &lt;- renderPlot( {
         n &lt;- input$n
-        p &lt;- input$p<br>
+        p &lt;- input$p   
        mean &lt;- n * p
-       sd &lt;- sqrt(n * p * (1 - p))</p>
+       sd &lt;- sqrt(n * p * (1 - p))
 
-<pre><code>   x &lt;- seq(0, n, by=1)
-   x2 &lt;- seq(0, n, by = 0.01)
-   y &lt;- dbinom(x, n, p)               
-   z &lt;- dnorm(x2, mean, sd)
-   plot(x2, z, type = &quot;l&quot;, col = &quot;green&quot;, lwd = 5, 
-        main = &quot;Normal Approximation of Bionomial Distribution&quot;)
-   lines(x, y, type = &quot;h&quot;,  col = &quot;red&quot;, lwd = 5)    
-   legend(&quot;topright&quot;, c(&quot;Normal Approximation&quot;, &quot;Binomial Distribution&quot;),
-   lty=c(1,1), lwd=c(5, 5), col=c(&quot;green&quot;,&quot;red&quot;))                      
-</code></pre>
-
-<p>}) </p>
+       x &lt;- seq(0, n, by=1)
+       x2 &lt;- seq(0, n, by = 0.01)
+       y &lt;- dbinom(x, n, p)               
+       z &lt;- dnorm(x2, mean, sd)
+       plot(x2, z, type = &quot;l&quot;, col = &quot;green&quot;, lwd = 5, 
+            main = &quot;Normal Approximation of Bionomial Distribution&quot;)
+       lines(x, y, type = &quot;h&quot;,  col = &quot;red&quot;, lwd = 5)    
+       legend(&quot;topright&quot;, c(&quot;Normal Approximation&quot;, &quot;Binomial Distribution&quot;),
+       lty=c(1,1), lwd=c(5, 5), col=c(&quot;green&quot;,&quot;red&quot;))                      
+}) 
+</code></pre></li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -95,27 +94,25 @@
   <article data-timings="">
     <ol>
 <li>Input n, p value from sliders. </li>
-<li>Output Density Function Plot and mean and standard deviation of normal approximation.</li>
-</ol>
+<li><p>Output Density Function Plot and mean and standard deviation of normal approximation.</p>
 
-<h1>Input n, p</h1>
-
-<p>sidebarPanel(<br>
+<pre><code># Input n, p
+sidebarPanel(                
         sliderInput(&#39;n&#39;, &#39;n&#39;, min = 1, max = 50,
                     value = 6, step=1),
         sliderInput(&#39;p&#39;, &#39;p&#39;, min = 0.01, max = 0.99,
-                    value = 0.5, step=0.01)<br>
-),</p>
-
-<h1>Output Density Function plot</h1>
-
-<p>mainPanel(
-        plotOutput(&#39;plot&#39;),<br>
+                    value = 0.5, step=0.01)                
+),
+# Output Density Function plot 
+mainPanel(
+        plotOutput(&#39;plot&#39;),    
         h4(&#39;mean of normal approximation&#39;),
         verbatimTextOutput(&#39;mean&#39;),
         h4(&#39;standard deviation of normal approximation&#39;),
         verbatimTextOutput(&#39;sd&#39;)
-)</p>
+)
+</code></pre></li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
